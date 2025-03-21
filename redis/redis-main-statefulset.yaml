@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: redis-main
+spec:
+  serviceName: "redis-main"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+      role: main
+  template:
+    metadata:
+      labels:
+        app: redis
+        role: main
+    spec:
+      containers:
+        - name: redis
+          image: redis:7.0.12
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: redis-storage
+              mountPath: /data
+            - name: redis-config
+              mountPath: /etc/redis/redis.conf
+              subPath: redis.conf
+          command: ["redis-server", "/etc/redis/redis.conf"]
+          env:
+            - name: REDIS_REPLICATION_MODE
+              value: "master"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+      volumes:
+        - name: redis-config
+          configMap:
+            name: redis-config
+  volumeClaimTemplates:
+    - metadata:
+        name: redis-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
