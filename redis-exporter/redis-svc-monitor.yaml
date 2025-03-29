@@ -9,9 +9,9 @@ spec:
     matchLabels:
       app: redis-exporter
   endpoints:
-    - port: metrics
-      interval: 10s
+    - interval: 10s
       path: /metrics
+      port: metrics
   namespaceSelector:
     matchNames:
       - default
