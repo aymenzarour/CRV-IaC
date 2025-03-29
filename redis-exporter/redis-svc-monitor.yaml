@@ -11,6 +11,7 @@ spec:
   endpoints:
     - port: metrics
       interval: 10s
+      path: /metrics
   namespaceSelector:
     matchNames:
       - default
