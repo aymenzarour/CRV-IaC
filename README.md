@@ -126,6 +126,11 @@ ServiceMonitor Configuration Highlights:
 - namespaceSelector.matchNames: ["default"]
 - endpoints.path=/metrics, port=metrics
 
+![Grafana Home](./grafana.png)
+![Redis Metrics in Grafana](./graphana-redis.png)
+![Prometheus Target Discovery](./prometheus target.png)
+
+
 ## Final Observations
 
 - Prometheus discovered both redis-service-monitor and nodejs-service-monitor successfully.
