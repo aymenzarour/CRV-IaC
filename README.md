@@ -126,9 +126,14 @@ ServiceMonitor Configuration Highlights:
 - namespaceSelector.matchNames: ["default"]
 - endpoints.path=/metrics, port=metrics
 
-![Redis Metrics in Grafana](./graphana-redis.png)
-![Prometheus Target Discovery](./prometheus-target.png)
 
+### Redis Metrics
+
+![redis-metrics](./graphana-redis.png)
+
+### Prometheus Target Discovery
+
+![prometheus-target](./prometheus-target.png)
 
 ## Final Observations
 
