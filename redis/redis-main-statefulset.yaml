@@ -15,6 +15,13 @@ spec:
         app: redis
         role: main
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: node-03
+      tolerations:
+        - key: "node-role.kubernetes.io/master"
+          operator: "Equal"
+          value: "true"
+          effect: "NoSchedule"
       containers:
         - name: redis
           image: redis:7.0.12
