@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nodejs
-          image: aymenzarour/redis-node:latest
+          image: aymenzarour/redis-node:1
           ports:
             - containerPort: 3000
           env:

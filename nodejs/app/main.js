@@ -79,6 +79,16 @@ app.get('/items', (req, res) => {
   readClient.keys('*').then((keys) => res.send(JSON.stringify(keys)))
 })
 
+
+app.get('/pending', async (req, res) => {
+  const delay = parseInt(req.query.delay) || 10000; // en millisecondes
+  log(`pending route hit, delaying ${delay}ms`);
+  setTimeout(() => {
+    res.send(`Delayed for ${delay}ms`);
+  }, delay);
+});
+
+
 app.listen(port, () => {
   log(`listening at http://localhost:${port} server ${UUID}`)
 })
